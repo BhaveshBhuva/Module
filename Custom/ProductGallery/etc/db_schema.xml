@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    
+    <table name="custom_product_gallery_additional" resource="default" engine="innodb"
+           comment="Custom Product Gallery Additional Backend Table">
+        <column xsi:type="int" name="value_id" unsigned="false" nullable="false" identity="true"
+                comment="Value ID"/>
+        <column xsi:type="smallint" name="store_id" unsigned="true" nullable="false" identity="false"
+                default="0" comment="Store ID"/>
+        <column xsi:type="int" name="product_id" unsigned="true" nullable="false" identity="false"
+                default="0" comment="Product ID"/>
+        <column xsi:type="int" name="position" unsigned="false" nullable="false" identity="false"
+                default="0" comment="Position"/>
+        <column xsi:type="varchar" name="value" nullable="true" length="255" comment="Value"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="value_id"/>
+        </constraint>
+        <constraint xsi:type="foreign" referenceId="CAT_PRD_ENTT_GLR_ADD_ENTT_ID_CAT_PRD_ENTT_ENTT_ID"
+                    table="custom_product_gallery_additional" column="product_id" referenceTable="catalog_product_entity"
+                    referenceColumn="entity_id" onDelete="CASCADE"/>
+        <index referenceId="CATALOG_PRODUCT_ENTITY_GALLERY_ADD_ENTITY_ID" indexType="btree">
+            <column name="product_id"/>
+        </index>
+    </table>
+</schema>

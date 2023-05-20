@@ -1,0 +1,7 @@
+{
+    "cms_block": {
+        "column": {
+            "is_hide_guest": true
+        }
+    }
+}

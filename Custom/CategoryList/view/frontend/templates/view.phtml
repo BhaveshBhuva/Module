@@ -1,0 +1,19 @@
+<?php 
+$childCategory=$block->getChildCategory();
+?>
+<?php if(!empty($childCategory)): ?>
+<ul class="child-category-section">
+	<?php foreach($childCategory as $child):
+	$loadCategory=$block->getCategory($child->getId());
+	 ?>
+	<li>
+	<div class="category-image">
+		<a href="<?= $child->getUrl();?>" title="<?= $child->getName();?>"><img src="<?php echo $loadCategory->getImageUrl(); ?>"/></a>
+	</div>
+	<div class="category-name">
+		<a href="<?= $child->getUrl();?>" title="<?= $child->getName();?>"><?= $child->getName();?></a>
+	</div>
+	</li>
+	<?php endforeach;?>
+</ul>
+<?php endif; ?>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <htmlContent name="productgallery" sortOrder="220">
+        <argument name="data" xsi:type="array">
+            <item name="wrapper" xsi:type="array">
+                <item name="label" xsi:type="string" translate="true">Installed Photos</item>
+                <item name="collapsible" xsi:type="boolean">true</item>
+                <item name="opened" xsi:type="boolean">false</item>
+            </item>
+        </argument>
+        <settings>
+            <wrapper>
+                <canShow>true</canShow>
+                <componentType>fieldset</componentType>
+            </wrapper>
+        </settings>
+        <block name="productgallery" class="Custom\ProductGallery\Block\Adminhtml\Product\Helper\Form\ProductGallery">
+            <block class="Custom\ProductGallery\Block\Adminhtml\Product\Helper\Form\Gallery\Content" name="productInstalledContent" as="content" template="Custom_ProductGallery::catalog/product/helper/gallery.phtml">
+                <arguments>
+                    <argument name="config" xsi:type="array">
+                        <item name="parentComponent" xsi:type="string">product_form.product_form.block_productgallery.block_productgallery</item>
+                    </argument>
+                </arguments>
+            </block>
+        </block>
+    </htmlContent>
+</form>

@@ -1,0 +1,22 @@
+{
+    "custom_product_gallery_additional": {
+        "column": {
+            "value_id": true,
+            "store_id": true,
+            "entity_id": true,
+            "position": true,
+            "value": true,
+            "product_id": true
+        },
+        "index": {
+            "CUSTOM_PRODUCT_GALLERY_ADDITIONAL_ENTITY_ID": true,
+            "CUSTOM_PRODUCT_GALLERY_ADDITIONAL_PRODUCT_ID": true
+        },
+        "constraint": {
+            "PRIMARY": true,
+            "CUSTOM_PRD_GLR_ADDITIONAL_ENTT_ID_CAT_PRD_ENTT_ENTT_ID": true,
+            "CUSTOM_PRODUCT_GALLERY_ADDITIONAL_ENTITY_ID": true,
+            "CUSTOM_PRD_GLR_ADDITIONAL_PRD_ID_CAT_PRD_ENTT_ENTT_ID": true
+        }
+    }
+}

@@ -1,0 +1,26 @@
+<?php $collection = $block->getProductGalleryCollection(); ?>
+<?php if($collection->count() > 0): ?>
+    <div class="product-gallery">
+        <div class="product-heading">
+            <h3><?= __(' Installed Photos');?></h3>
+        </div>
+        <ul class="product-gallery">
+        <?php foreach ($collection as $key => $data): ?>
+                <li class="gallery-item">
+                    <a rel="example_group" href="<?= $block->GetImageUrl($data->getValue());?>">
+                        <img src="<?= $block->getResizeImage($data->getValue())?>" alt=""/>
+                    </a>
+                </li>
+        <?php endforeach; ?>
+        </ul>
+    </div>
+    <script type="text/javascript">
+        require(["jquery",'lofallFancybox'], function ($) {
+            $(" ul.product-gallery li a[rel=example_group]").fancybox({
+                'transitionIn'      : 'none',
+                'transitionOut'     : 'none',
+                'titlePosition'     : 'over'
+            });
+        });
+    </script>
+<?php endif; ?>

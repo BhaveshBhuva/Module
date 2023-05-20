@@ -1,0 +1,43 @@
+<?php $collection = $block->GetCategoryCollection(); 
+?>
+
+<?php if($collection->getSize()):?>
+<div class="homepage-category-section">
+	<div class="left-category-section">
+		<div class="cat-wrap">
+			<h2 class="cat-sub-heading">Categories</h2>
+			<ul class="cat-list">
+			<?php foreach($collection as $category):?>
+				<li class="cat-item"><a class="ajaxclick" href="javascript:void(0);" cat-id="<?= $category->getId()?>" title="<?= $category->getName()?>"><?= $category->getName()?></a></li>
+			<?php endforeach;?>
+			</ul>
+		</div>	
+	</div>
+	<div class="right-cat-section">
+		<div class="cat-right-wrap" id="child-category-container">
+		</div>
+	</div>
+</div>	
+<script type="text/javascript">
+require(['jquery',
+], function ($) {
+    $(document).ready(function () {
+        $(document).on('click', '.homepage-category-section .left-category-section li a.ajaxclick', function () {
+            var cat_id = $(this).attr("cat-id");			
+		$(".left-category-section .cat-list li").removeClass("active");
+		    jQuery(this).parent().addClass('active');
+			$.ajax({
+					showLoader: true,
+					url: "<?= $this->getUrl()."/categorylist/index/index/";?>",
+					data:{id:cat_id},
+					type: "POST",
+					dataType: 'json'
+				}).done(function (data) {					
+					var html = data.output; 										
+					$('.right-cat-section #child-category-container').html(html);
+				});
+        });
+        jQuery(".left-category-section li:first > a").trigger("click");
+    });
+});</script>
+<?php endif;?>
